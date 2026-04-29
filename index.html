@@ -8,7 +8,7 @@
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
-            --bg-color: #f8f9fa;
+            --bg-color: #fdfbf7; /* צבע שמנת-לבן תואם ללוגו */
             --text-color: #333;
         }
 
@@ -19,6 +19,11 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
+            min-height: 100vh;
+            box-sizing: border-box;
+            /* הפסים הכחולים בצדדים */
+            border-right: 12px solid var(--secondary-color);
+            border-left: 12px solid var(--secondary-color);
         }
 
         /* ניווט */
@@ -53,7 +58,7 @@
         .hero {
             text-align: center;
             padding: 60px 20px;
-            background-color: #fff;
+            background-color: transparent;
             border-bottom: 1px solid #eaeaea;
         }
 
@@ -178,7 +183,7 @@
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
-            left: 30px;
+            left: 42px; /* הוזז מעט ימינה בגלל הפס */
             background-color: #25d366;
             color: white;
             width: 60px;
