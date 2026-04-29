@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>א.כ. ניקיון ותחזוקה</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* ניווט */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* אזור ראשי (Hero) */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .hero img {
+            max-width: 250px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        /* כפתור נעים להכיר */
+        .btn-meet {
+            background-color: var(--secondary-color);
+            color: #fff;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            animation: pulse-blue 2.5s infinite;
+            font-weight: bold;
+        }
+
+        @keyframes pulse-blue {
+            0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
+            50% { box-shadow: 0 0 0 15px rgba(52, 152, 219, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+        }
+
+        /* שירותים */
+        .services {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: var(--secondary-color);
+        }
+
+        /* טופס פנייה (Modal) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+        }
+
+        .modal-content input, .modal-content textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .modal-content button {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        /* כפתור וואטסאפ צף */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            50% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .whatsapp-float svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#home">ראשי</a>
+            <a href="#services">שירותים</a>
+            <a href="#contact" onclick="openModal(); return false;">צור קשר</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <img src="logo.png" alt="א.כ. ניקיון ותחזוקה">
+        <h1>השקט הנפשי שלכם, האחריות שלנו</h1>
+        <p>
+            א.כ. הוקמה בשנת 2025 במטרה לתת שירות מכל הלב. אנחנו מאמינים שתחזוקה נכונה מתחילה באכפתיות, זמינות ומקצועיות ללא פשרות. אנחנו כאן לכל תקלה, עם צוות מסור שרואה אתכם ואת הצרכים שלכם, כדי שאתם תוכלו להתנהל בראש שקט.
+        </p>
+        <button class="btn-meet" onclick="openModal()">נעים להכיר</button>
+    </section>
+
+    <section id="services" class="services">
+        <h2>השירותים שלנו</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>ניקיון מבנים ויסודיות</h3>
+                <p>שמירה על סביבה נקייה ומזמינה באופן שוטף, תוך ירידה לפרטים הקטנים והקפדה על סטנדרט גבוה.</p>
+            </div>
+            <div class="service-card">
+                <h3>תחזוקה מונעת ושוטפת</h3>
+                <p>טיפול חכם ומקדים במערכות המבנה כדי למנוע תקלות עתידיות ולחסוך לכם זמן וכסף מיותר.</p>
+            </div>
+            <div class="service-card">
+                <h3>מענה מהיר לתקלות</h3>
+                <p>צוות זמין לכל קריאה, עם פתרונות פרקטיים ומהירים בשטח, ובחיוך תמיד.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 style="margin-top: 0;">בואו נדבר</h2>
+            <p>השאירו פרטים ונחזור אליכם בהקדם.</p>
+            <form onsubmit="event.preventDefault(); closeModal();">
+                <input type="text" placeholder="שם מלא" required>
+                <input type="tel" placeholder="טלפון" required>
+                <textarea rows="4" placeholder="איך נוכל לעזור?"></textarea>
+                <button type="submit">שלח פנייה</button>
+            </form>
+        </div>
+    </div>
+
+    <a href="https://wa.me/972526745875" class="whatsapp-float" target="_blank">
+        <svg viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+        </svg>
+    </a>
+
+    <script>
+        function openModal() {
+            document.getElementById('contactModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
+        // סגירת הטופס בלחיצה מחוץ לחלון
+        window.onclick = function(event) {
+            var modal = document.getElementById('contactModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
