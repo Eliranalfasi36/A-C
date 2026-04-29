@@ -6,10 +6,8 @@
     <title>א.כ. ניקיון ותחזוקה</title>
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --bg-color: #fdfbf7; /* צבע שמנת-לבן תואם ללוגו */
-            --glow-color: rgba(52, 152, 219, 0.6);
+            --primary-color: #2c3e50; /* אפור-פחם כהה - משמש לכפתורים וכותרות */
+            --bg-color: #F8F4E9; /* גוון הקרם-שמנת המדויק מהלוגו */
             --text-color: #333;
         }
 
@@ -22,42 +20,23 @@
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
-            justify-content: center; /* ממרכז את תיבת התוכן הראשי */
+            justify-content: center;
             position: relative;
         }
 
-        /* הפסים הכחולים עם הזוהר (מסגרת חיצונית) */
-        body::before, body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            width: 4px; /* הקטנת העובי */
-            background-color: var(--secondary-color);
-            box-shadow: 0 0 10px 3px var(--glow-color); /* אפקט זוהר */
-            z-index: 1000;
-        }
-
-        body::after {
-            right: 20px; /* הזיזה למרכז */
-        }
-
-        body::before {
-            left: 20px; /* הזיזה למרכז */
-        }
-
-        /* מיכל התוכן הראשי שיושב בין הפסים */
+        /* מיכל התוכן הראשי */
         .page-container {
             width: 100%;
+            max-width: 1200px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* ניווט - ברוחב מלא בתוך המסגרת */
+        /* ניווט */
         header {
             background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -80,7 +59,8 @@
         }
 
         nav a:hover {
-            color: var(--secondary-color);
+            color: var(--primary-color);
+            text-decoration: underline;
         }
 
         /* אזור ראשי (Hero) */
@@ -88,7 +68,6 @@
             text-align: center;
             padding: 60px 20px;
             background-color: transparent;
-            border-bottom: 1px solid #eaeaea;
             width: 100%;
             box-sizing: border-box;
         }
@@ -112,25 +91,25 @@
 
         /* כפתור נעים להכיר */
         .btn-meet {
-            background-color: var(--secondary-color);
+            background-color: var(--primary-color);
             color: #fff;
             border: none;
             padding: 15px 40px;
             font-size: 1.2rem;
             border-radius: 30px;
             cursor: pointer;
-            animation: pulse-blue 2.5s infinite;
+            animation: pulse-charcoal 2.5s infinite;
             font-weight: bold;
         }
 
-        @keyframes pulse-blue {
-            0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
-            50% { box-shadow: 0 0 0 15px rgba(52, 152, 219, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+        @keyframes pulse-charcoal {
+            0% { box-shadow: 0 0 0 0 rgba(44, 62, 80, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(44, 62, 80, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(44, 62, 80, 0); }
         }
 
-        /* שירותים */
-        .services {
+        /* סקשנים כלליים (שירותים ולמה אנחנו) */
+        .content-section {
             padding: 60px 20px;
             max-width: 1000px;
             margin: 0 auto;
@@ -139,27 +118,33 @@
             box-sizing: border-box;
         }
 
-        .services-grid {
+        .content-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
 
-        .service-card {
-            background: #fff;
+        /* כרטיסי מידע */
+        .info-card {
+            background: var(--bg-color);
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
             transition: transform 0.3s;
         }
 
-        .service-card:hover {
+        .info-card:hover {
             transform: translateY(-5px);
         }
 
-        .service-card h3 {
-            color: var(--secondary-color);
+        .info-card h3 {
+            color: var(--primary-color);
         }
 
         /* טופס פנייה (Modal) */
@@ -167,8 +152,8 @@
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 1001; /* מעל המסגרת הכחולה */
+            background-color: rgba(0,0,0,0.4);
+            z-index: 1001;
             justify-content: center;
             align-items: center;
         }
@@ -180,6 +165,10 @@
             width: 90%;
             max-width: 400px;
             position: relative;
+        }
+
+        .modal-content h2 {
+            color: var(--primary-color);
         }
 
         .close-btn {
@@ -216,7 +205,7 @@
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
-            left: 42px; /* מותאם למיקום החדש של הפס */
+            left: 30px;
             background-color: #25d366;
             color: white;
             width: 60px;
@@ -227,14 +216,14 @@
             align-items: center;
             font-size: 30px;
             text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             z-index: 100;
-            animation: pulse-green 2s infinite;
+            animation: pulse-green-subtle 2s infinite;
         }
 
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            50% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+        @keyframes pulse-green-subtle {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.3); }
+            50% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
@@ -252,6 +241,7 @@
             <nav>
                 <a href="#home">ראשי</a>
                 <a href="#services">שירותים</a>
+                <a href="#why-us">למה אנחנו?</a>
                 <a href="#contact" onclick="openModal(); return false;">צור קשר</a>
             </nav>
         </header>
@@ -265,20 +255,38 @@
             <button class="btn-meet" onclick="openModal()">נעים להכיר</button>
         </section>
 
-        <section id="services" class="services">
+        <section id="services" class="content-section">
             <h2>השירותים שלנו</h2>
-            <div class="services-grid">
-                <div class="service-card">
+            <div class="grid-container">
+                <div class="info-card">
                     <h3>ניקיון מבנים ויסודיות</h3>
                     <p>שמירה על סביבה נקייה ומזמינה באופן שוטף, תוך ירידה לפרטים הקטנים והקפדה על סטנדרט גבוה.</p>
                 </div>
-                <div class="service-card">
+                <div class="info-card">
                     <h3>תחזוקה מונעת ושוטפת</h3>
                     <p>טיפול חכם ומקדים במערכות המבנה כדי למנוע תקלות עתידיות ולחסוך לכם זמן וכסף מיותר.</p>
                 </div>
-                <div class="service-card">
+                <div class="info-card">
                     <h3>מענה מהיר לתקלות</h3>
                     <p>צוות זמין לכל קריאה, עם פתרונות פרקטיים ומהירים בשטח, ובחיוך תמיד.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-us" class="content-section">
+            <h2>למה לבחור בנו?</h2>
+            <div class="grid-container">
+                <div class="info-card">
+                    <h3>שירות מכל הלב</h3>
+                    <p>אצלנו אתם לא עוד לקוח, אלא חלק מהמשפחה. אנחנו מביאים איתנו חמימות, אכפתיות ואנרגיות טובות לכל קריאה ולכל פרויקט.</p>
+                </div>
+                <div class="info-card">
+                    <h3>זמינות ונוכחות</h3>
+                    <p>אנחנו מבינים שתקלות לא מתחשבות בלוח הזמנים. הצוות שלנו זמין, קשוב ונמצא כאן עבורכם כדי לתת מענה מהיר ומרגיע בזמן אמת.</p>
+                </div>
+                <div class="info-card">
+                    <h3>מקצועיות ללא פשרות</h3>
+                    <p>היחס החם מגובה בסטנדרט עבודה גבוה במיוחד. אנו מקפידים על יסודיות, שקיפות ופתרונות מדויקים לטווח ארוך.</p>
                 </div>
             </div>
         </section>
