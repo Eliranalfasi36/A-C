@@ -9,6 +9,7 @@
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
             --bg-color: #fdfbf7; /* צבע שמנת-לבן תואם ללוגו */
+            --glow-color: rgba(52, 152, 219, 0.6);
             --text-color: #333;
         }
 
@@ -20,19 +21,47 @@
             color: var(--text-color);
             line-height: 1.6;
             min-height: 100vh;
-            box-sizing: border-box;
-            /* הפסים הכחולים בצדדים */
-            border-right: 12px solid var(--secondary-color);
-            border-left: 12px solid var(--secondary-color);
+            display: flex;
+            justify-content: center; /* ממרכז את תיבת התוכן הראשי */
+            position: relative;
         }
 
-        /* ניווט */
+        /* הפסים הכחולים עם הזוהר (מסגרת חיצונית) */
+        body::before, body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 4px; /* הקטנת העובי */
+            background-color: var(--secondary-color);
+            box-shadow: 0 0 10px 3px var(--glow-color); /* אפקט זוהר */
+            z-index: 1000;
+        }
+
+        body::after {
+            right: 20px; /* הזיזה למרכז */
+        }
+
+        body::before {
+            left: 20px; /* הזיזה למרכז */
+        }
+
+        /* מיכל התוכן הראשי שיושב בין הפסים */
+        .page-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ניווט - ברוחב מלא בתוך המסגרת */
         header {
             background-color: #fff;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
+            width: 100%;
         }
 
         nav {
@@ -60,6 +89,8 @@
             padding: 60px 20px;
             background-color: transparent;
             border-bottom: 1px solid #eaeaea;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .hero img {
@@ -104,6 +135,8 @@
             max-width: 1000px;
             margin: 0 auto;
             text-align: center;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .services-grid {
@@ -135,7 +168,7 @@
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(0,0,0,0.5);
-            z-index: 1000;
+            z-index: 1001; /* מעל המסגרת הכחולה */
             justify-content: center;
             align-items: center;
         }
@@ -183,7 +216,7 @@
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
-            left: 42px; /* הוזז מעט ימינה בגלל הפס */
+            left: 42px; /* מותאם למיקום החדש של הפס */
             background-color: #25d366;
             color: white;
             width: 60px;
@@ -214,40 +247,42 @@
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a href="#home">ראשי</a>
-            <a href="#services">שירותים</a>
-            <a href="#contact" onclick="openModal(); return false;">צור קשר</a>
-        </nav>
-    </header>
+    <div class="page-container">
+        <header>
+            <nav>
+                <a href="#home">ראשי</a>
+                <a href="#services">שירותים</a>
+                <a href="#contact" onclick="openModal(); return false;">צור קשר</a>
+            </nav>
+        </header>
 
-    <section id="home" class="hero">
-        <img src="logo.png" alt="א.כ. ניקיון ותחזוקה">
-        <h1>השקט הנפשי שלכם, האחריות שלנו</h1>
-        <p>
-            א.כ. הוקמה בשנת 2025 במטרה לתת שירות מכל הלב. אנחנו מאמינים שתחזוקה נכונה מתחילה באכפתיות, זמינות ומקצועיות ללא פשרות. אנחנו כאן לכל תקלה, עם צוות מסור שרואה אתכם ואת הצרכים שלכם, כדי שאתם תוכלו להתנהל בראש שקט.
-        </p>
-        <button class="btn-meet" onclick="openModal()">נעים להכיר</button>
-    </section>
+        <section id="home" class="hero">
+            <img src="logo.png" alt="א.כ. ניקיון ותחזוקה">
+            <h1>השקט הנפשי שלכם, האחריות שלנו</h1>
+            <p>
+                א.כ. הוקמה בשנת 2025 במטרה לתת שירות מכל הלב. אנחנו מאמינים שתחזוקה נכונה מתחילה באכפתיות, זמינות ומקצועיות ללא פשרות. אנחנו כאן לכל תקלה, עם צוות מסור שרואה אתכם ואת הצרכים שלכם, כדי שאתם תוכלו להתנהל בראש שקט.
+            </p>
+            <button class="btn-meet" onclick="openModal()">נעים להכיר</button>
+        </section>
 
-    <section id="services" class="services">
-        <h2>השירותים שלנו</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>ניקיון מבנים ויסודיות</h3>
-                <p>שמירה על סביבה נקייה ומזמינה באופן שוטף, תוך ירידה לפרטים הקטנים והקפדה על סטנדרט גבוה.</p>
+        <section id="services" class="services">
+            <h2>השירותים שלנו</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>ניקיון מבנים ויסודיות</h3>
+                    <p>שמירה על סביבה נקייה ומזמינה באופן שוטף, תוך ירידה לפרטים הקטנים והקפדה על סטנדרט גבוה.</p>
+                </div>
+                <div class="service-card">
+                    <h3>תחזוקה מונעת ושוטפת</h3>
+                    <p>טיפול חכם ומקדים במערכות המבנה כדי למנוע תקלות עתידיות ולחסוך לכם זמן וכסף מיותר.</p>
+                </div>
+                <div class="service-card">
+                    <h3>מענה מהיר לתקלות</h3>
+                    <p>צוות זמין לכל קריאה, עם פתרונות פרקטיים ומהירים בשטח, ובחיוך תמיד.</p>
+                </div>
             </div>
-            <div class="service-card">
-                <h3>תחזוקה מונעת ושוטפת</h3>
-                <p>טיפול חכם ומקדים במערכות המבנה כדי למנוע תקלות עתידיות ולחסוך לכם זמן וכסף מיותר.</p>
-            </div>
-            <div class="service-card">
-                <h3>מענה מהיר לתקלות</h3>
-                <p>צוות זמין לכל קריאה, עם פתרונות פרקטיים ומהירים בשטח, ובחיוך תמיד.</p>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <div id="contactModal" class="modal">
         <div class="modal-content">
