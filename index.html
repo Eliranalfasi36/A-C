@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>א.כ. ניקיון ותחזוקה</title>
+    
+    <!-- תגיות לשיתוף בוואטסאפ וברשתות חברתיות -->
+    <meta property="og:title" content="א.כ. ניקיון ותחזוקה">
+    <meta property="og:description" content="השקט הנפשי שלכם, האחריות שלנו. תחזוקה, ניקיון ושירות מכל הלב.">
+    <meta property="og:image" content="https://eliranfasi36.github.io/A-C/logo.png">
+    <meta property="og:url" content="https://eliranfasi36.github.io/A-C/">
+    <meta property="og:type" content="website">
+
     <style>
         :root {
             --primary-color: #2c3e50;
             --bg-color-solid: #F8F4E9;
-            --bg-color-faded: rgba(248, 244, 233, 0.85); /* השמנת בגרסה דהויה */
+            --bg-color-faded: rgba(248, 244, 233, 0.85); 
             --text-color: #333;
         }
 
@@ -16,7 +24,6 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            /* רקע תמונה עם שכבת שמנת דהויה */
             background: linear-gradient(var(--bg-color-faded), var(--bg-color-faded)), url('p-clean.png');
             background-size: cover;
             background-position: center;
@@ -26,14 +33,13 @@
             min-height: 100vh;
         }
 
-        /* תפריט עליון - רוחב מלא מקצה לקצה */
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
-            width: 100%; /* פריסה מלאה */
+            width: 100%; 
         }
 
         nav {
@@ -58,7 +64,6 @@
             text-decoration: underline;
         }
 
-        /* מיכל התוכן המרכזי */
         .page-container {
             width: 100%;
             display: flex;
@@ -66,7 +71,6 @@
             align-items: center;
         }
 
-        /* אזור ראשי */
         .hero {
             text-align: center;
             padding: 80px 20px;
@@ -95,7 +99,6 @@
             font-weight: 500;
         }
 
-        /* כפתור נעים להכיר */
         .btn-meet {
             background-color: var(--primary-color);
             color: #fff;
@@ -119,7 +122,6 @@
             100% { box-shadow: 0 0 0 0 rgba(44, 62, 80, 0); }
         }
 
-        /* סקשנים של תוכן */
         .content-section {
             padding: 70px 20px;
             max-width: 1100px;
@@ -135,16 +137,16 @@
             margin-bottom: 30px;
         }
 
+        /* רשת משבצות (Grid) מעודכנת */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr); /* 3 עמודות במחשב */
             gap: 35px;
             margin-top: 20px;
         }
 
-        /* כרטיסי מידע */
         .info-card {
-            background: rgba(248, 244, 233, 0.9); /* שמנת כמעט אטומה בתוך הכרטיסים */
+            background: rgba(248, 244, 233, 0.9); 
             border: 2px solid var(--primary-color);
             padding: 35px;
             border-radius: 18px;
@@ -163,7 +165,36 @@
             font-size: 1.4rem;
         }
 
-        /* מודאל (טופס) */
+        /* התאמה למובייל */
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr); /* 2 עמודות במובייל (אחד ליד השני) */
+                gap: 15px;
+            }
+            .info-card {
+                padding: 20px 15px;
+            }
+            .info-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+            }
+            .info-card p {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+            /* הפיכת המשבצת השלישית לרוחב מלא במובייל למניעת שטח ריק */
+            .info-card:nth-child(3) {
+                grid-column: 1 / -1;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* מודאל */
         .modal {
             display: none;
             position: fixed;
